@@ -40,7 +40,10 @@ const run = async () => {
     app.patch("/blog/:id", async (req, res) => {
       const id = req.params.id;
       const data = req.body;
-      const result = await blogCollection.updateOne({ _id: ObjectId(id) });
+      const result = await productCollection.updateOne(
+        { _id: ObjectId(id) },
+        { $set: data }
+      );
       res.send(result);
     });
 
